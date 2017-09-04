@@ -8,8 +8,7 @@ import scrapy
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
     start_urls = [
-            'http://quotes.toscrape.com/page/1/',
-            'http://quotes.toscrape.com/page/2/',
+            'http://quotes.toscrape.com'
     ]
 
     def parse(self, response):
@@ -19,4 +18,9 @@ class QuotesSpider(scrapy.Spider):
                     'author': quote.xpath('span/small[@class="author"]/text()').extract_first(),
                     'tags': quote.xpath('div/a[@class="tag"]/text()').extract(),
            }
+
+        next_page_url = response.xpath('//li[@class="next"]/a/@href').extract_first()
+        if next_page_url is not None:
+            next_page = response.urljoin(next_page_url)
+            yield scrapy.Request(next_page, callback=self.parse)
 
