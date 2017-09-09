@@ -3,7 +3,6 @@
 # auther: toddlerya
 
 import scrapy
-from sogou_movie.items import sogouMovieItem
 
 
 class sogouSpider(scrapy.Spider):
@@ -15,7 +14,6 @@ class sogouSpider(scrapy.Spider):
         for movie in response.xpath('//div[@class="cell cf"]'):
             info = movie.xpath('div[@class="infor"]')
             info_p = info.xpath('dl[@class="cf"]')
-            item = sogouMovieItem()
             yield {
                     "detail_page_url": "http://kan.sogou.com" + movie.xpath('a/@href').extract_first(),
                     "cover_img_url": movie.xpath('a/img/@src').extract_first(),
