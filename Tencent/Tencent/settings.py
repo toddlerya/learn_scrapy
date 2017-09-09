@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for itcast project
+# Scrapy settings for Tencent project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,17 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'itcast'
+BOT_NAME = 'Tencent'
 
-SPIDER_MODULES = ['itcast.spiders']
-NEWSPIDER_MODULE = 'itcast.spiders'
+SPIDER_MODULES = ['Tencent.spiders']
+NEWSPIDER_MODULE = 'Tencent.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'itcast (+http://www.yourdomain.com)'
+#USER_AGENT = 'Tencent (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -33,7 +33,7 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'itcast.middlewares.ItcastSpiderMiddleware': 543,
+#    'Tencent.middlewares.TencetnSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'itcast.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'Tencent.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'itcast.pipelines.ItcastPipeline': 300,
+   'Tencent.pipelines.TencentPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

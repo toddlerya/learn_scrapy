@@ -8,14 +8,15 @@
 import json
 
 
-class ItcastPipeline(object):
+class TencentPipeline(object):
     def __init__(self):
-        self.f = open('res-itcast_pipline.json', 'w')
+        self.w = open("tencent_position.jl", 'w')
 
     def process_item(self, item, spider):
-        content = json.dumps(dict(item), ensure_ascii=False) + ',\n'
-        self.f.write(content.encode('utf-8'))
+        content = json.dumps(dict(item), ensure_ascii=False)
+        content = content.encode('utf-8')
+        self.w.write(content)
         return item
 
     def close_spider(self, spider):
-        self.f.close()
+        self.w.close()

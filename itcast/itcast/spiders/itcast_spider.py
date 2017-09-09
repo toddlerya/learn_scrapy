@@ -14,7 +14,6 @@ class ItcastSpider(scrapy.Spider):
     def parse(self, response):
         node_list = response.xpath('//div[@class="li_txt"]')
 
-        items = []
         for node in node_list:
             item = ItcastItem()
             name = node.xpath('h3/text()').extract()
@@ -25,9 +24,8 @@ class ItcastSpider(scrapy.Spider):
             item['title'] = title[0]
             item['info'] = info[0]
 
-            items.append(item)
 
-        return items
+            yield item
 
 
 
