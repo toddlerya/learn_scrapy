@@ -13,7 +13,7 @@ class TencentPipeline(object):
         self.w = open("tencent_position.jl", 'w')
 
     def process_item(self, item, spider):
-        content = json.dumps(dict(item), ensure_ascii=False)
+        content = json.dumps(dict(item), ensure_ascii=False) + '\n'
         content = content.encode('utf-8')
         self.w.write(content)
         return item
