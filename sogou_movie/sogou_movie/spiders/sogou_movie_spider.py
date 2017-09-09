@@ -3,21 +3,21 @@
 # auther: toddlerya
 
 import scrapy
-from sougo_movie.items import SougoMovieItem
+from sogou_movie.items import sogouMovieItem
 
 
-class SougoSpider(scrapy.Spider):
-    name = "sougo_movie"
-    allow_domain = ["kan.sougo.com"]
-    start_urls = ["http://kan.sougo.com/dianying/----/"]
+class sogouSpider(scrapy.Spider):
+    name = "sogou_movie"
+    allow_domain = ["kan.sogou.com"]
+    start_urls = ["http://kan.sogou.com/dianying/----/"]
 
     def parse(self, response):
         for movie in response.xpath('//div[@class="cell cf"]'):
             info = movie.xpath('div[@class="infor"]')
             info_p = info.xpath('dl[@class="cf"]')
-            item = SougoMovieItem()
+            item = sogouMovieItem()
             yield {
-                    "detail_page_url": "http://kan.sougo.com" + movie.xpath('a/@href').extract_first(),
+                    "detail_page_url": "http://kan.sogou.com" + movie.xpath('a/@href').extract_first(),
                     "cover_img_url": movie.xpath('a/img/@src').extract_first(),
                     "duration": movie.xpath('a/p[@class="text_over"]/text()').extract_first().split()[1],
                     "movie_name": info.xpath('p[@class="tit"]/a/text()').extract_first(),
@@ -26,7 +26,7 @@ class SougoSpider(scrapy.Spider):
                     "director": info_p[1].xpath('dd/a/text()').extract(),
                     "movie_type": info_p[2].xpath('dd/a/text()').extract(),
                     "score": info.xpath('dl[@class="commit cf"]/dd/span/text()').extract_first(),
-                    "play_url": "http://kan.sougo.com" + info.xpath('div[@class="btn-wrap"]/a/@href').extract_first(),
+                    "play_url": "http://kan.sogou.com" + info.xpath('div[@class="btn-wrap"]/a/@href').extract_first(),
             }
 
 
